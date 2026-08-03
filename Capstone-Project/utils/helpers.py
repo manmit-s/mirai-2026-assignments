@@ -82,11 +82,11 @@ def get_severity_style(severity: str) -> Tuple[str, str]:
         Tuple of (color, icon)
     """
     styles = {
-        "low": ("#27ae60", "✅"),
-        "moderate": ("#f39c12", "⚠️"),
-        "high": ("#e74c3c", "🔴"),
+        "low": ("#27ae60", "OK"),
+        "moderate": ("#f39c12", "WARN"),
+        "high": ("#e74c3c", "HIGH"),
     }
-    return styles.get(severity, ("#95a5a6", "❓"))
+    return styles.get(severity, ("#95a5a6", "UNKNOWN"))
 
 
 def calculate_weekly_average(df, date_column="Date", value_column="Minutes_Used") -> Optional[float]:
