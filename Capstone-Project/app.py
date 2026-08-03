@@ -13,6 +13,16 @@ from utils.ai_coach import get_coach_response
 APP_DIR = Path(__file__).parent
 
 
+def get_secret_value(name: str) -> str:
+    """Read a Streamlit secret first, then fall back to environment variables."""
+    try:
+        value = st.secrets.get(name)
+    except Exception:
+        value = None
+
+    return value or os.getenv(name, "")
+
+
 st.set_page_config(
     page_title="Life-OS | Wellbeing Dashboard",
     page_icon=":material/self_improvement:",
@@ -243,12 +253,12 @@ def main() -> None:
     st.markdown('<div class="coaching-panel">', unsafe_allow_html=True)
 
     load_dotenv(APP_DIR / ".env")
-    api_key = os.getenv("GEMINI_API_KEY")
+    api_key = get_secret_value("GEMINI_API_KEY")
 
     if not api_key:
         st.warning(
             "Gemini API key required for personalized coaching. Add "
-            "`GEMINI_API_KEY=your_key_here` to `.env` and restart the app. "
+            "`GEMINI_API_KEY=your_key_here` to Streamlit secrets or local `.env`. "
             "Analytics still work without it."
         )
     else:
