@@ -2,6 +2,8 @@
 
 A production-quality Streamlit dashboard for screen-time analysis with AI-powered coaching from Google's Gemini API. Built as a virtual internship project demonstrating SaaS-grade development practices.
 
+### [Live Demo](https://life-os-wellbeing-manmit.streamlit.app)
+
 ## Features
 
 - **Interactive Dashboard**: Clean, modern UI with real-time filtering and analytics
