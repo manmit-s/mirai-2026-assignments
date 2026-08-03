@@ -308,8 +308,14 @@ def main() -> None:
     with col_share1:
         st.code(shareable_url, language=None)
     with col_share2:
-        if st.button("Copy Link", use_container_width=True):
-            st.success("Link ready to share.")
+        st.download_button(
+            label="Copy Link",
+            data=shareable_url,
+            file_name="life-os-share-link.txt",
+            mime="text/plain",
+            use_container_width=True,
+        )
+        st.caption("Downloads the link to a text file you can share.")
 
     st.markdown("Share this link with a friend to keep each other accountable.")
     st.markdown("</div>", unsafe_allow_html=True)
